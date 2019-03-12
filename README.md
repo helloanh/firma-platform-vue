@@ -3,7 +3,7 @@
 
 # Create project
 ```bash
-vue init webpack-normal [project-name]
+vue init webpack-simple [project-name]
 
 ```
 ## Firm Action Platform build with Vue.js  

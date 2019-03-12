@@ -3,36 +3,26 @@
 			 <div class="home-slide container">
 			        <div class="row">
 			           <div class="col-lg-6" id="left-pane">  
-			           	
-			           </div>
-			        </div><!-- left pane -->
-			        <div class="col-lg-6 slide1" id="right-pane">
-			          <div class="card" style="width: 100%;">
-			            <div class="card-body">
-			              <h2 class="card-title">FIRM is fighting for an America that is United, Strong, and Free.</h2>
-			              <p class="card-text">Our Values in Action: </p>
-			            </div>
-			            <ul class="list-group list-group-flush">
-			              <li class="list-group-item">Bring separated families home and end family separations.</li>
-			              <li class="list-group-item">We need more, not fewer immigrants.</li>
-			              <li class="list-group-item">Celebrate the road to citizenship, making it easiser for immigrants to become citizens.</li>
-			            </ul>
-			            <div class="card-body">
-			              <a href="#" class="card-link">
-			              	<button type="button" class="btn btn-primary" @click="changeStatus">{{status}}
-			              	</button>
-			              </a>
-			          </div>
-			        </div>
-			    </div><!-- right pane -->
+			           </div><!-- left-pane -->
+
+			           <div class="col-lg-6 slide1" id="right-pane">
+			            	<CardComponent 
+				             	title="FIRM is fighting for an America that is United, Strong, and Free."
+				             	subtitle="Our Values in Action:">
+			            	</CardComponent>
+			           </div><!-- right-pane -->
+			        </div><!-- end row -->
+			       
+			    </div><!-- end container -->
 				<div>
-					<roadmap-component></roadmap-component>
+					<RoadmapComponent></RoadmapComponent>
 				</div>
 			 </div>
 		</section>  
 </template>
 
 <script>
+	import Card from './Card.vue';
 	import Map from './Map.vue';
 	export default {
 		data: function() {
@@ -41,7 +31,8 @@
 			}
 		},
 		components: {
-			'roadmap-component': Map
+			'RoadmapComponent': Map,
+			'CardComponent': Card
 		},
 		methods: {
 			changeStatus() {
@@ -51,3 +42,48 @@
 		}
 	}
 </script>
+
+<style lang="scss" scoped>
+.App-slide1 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  background-image: url(./assets/images/firm-porange.png);
+  background-repeat: no-repeat;
+  margin-top: -20vh;
+
+  #right-pane {
+      background-color: rgba(255,255,255,0.9);
+      margin-top: 2rem;
+  }
+
+}
+
+.App-slide2 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  /*color: white;*/
+  background-image: url(./assets/images/heretostay.jpg);
+  background-repeat: no-repeat;
+  margin-top: -25vh;
+
+  #right-pane {
+    background-color: rgba(255,255,255,0.9);
+    margin-top: 2rem;
+  }
+}
+
+.slide1 {
+  &#right-pane {
+    padding-top: 1em;
+
+  }
+}
+</style>
