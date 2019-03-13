@@ -1,49 +1,50 @@
 <template>
-		<section class="App-slide1" id="slide1">
+	<div>
+		<div class="App-slide1" id="slide1">
 			 <div class="home-slide container">
+			 	{{selectedComponent}}
 			        <div class="row">
-			           <div class="col-lg-6" id="left-pane">  
-			           </div><!-- left-pane -->
-
-			           <div class="col-lg-6 slide1" id="right-pane">
-			            	<CardComponent 
-				             	title="FIRM is fighting for an America that is United, Strong, and Free."
-				             	subtitle="Our Values in Action:">
-			            	</CardComponent>
-			           </div><!-- right-pane -->
+			            <div class="col-lg-6" id="left-pane">  
+			            </div><!-- left-pane -->
+			            <div class="col-lg-6 slide1" id="right-pane">
+				            <component :in="selectedComponent = 'slideTwo'">
+					            <CardComponent>
+					            </CardComponent>	
+					        </component>		
+			            </div><!-- right-pane -->
+		           		
 			        </div><!-- end row -->
-			       
 			    </div><!-- end container -->
-				<div>
-					<RoadmapComponent></RoadmapComponent>
-				</div>
+				<RoadmapComponent></RoadmapComponent>
 			 </div>
-		</section>  
+
+		</div>  
+	</div>
 </template>
 
 <script>
 	import Card from './Card.vue';
+	import MiddleCard from './MiddleCard.vue';
+	import ThirdCard from './ThirdCard.vue';
 	import Map from './Map.vue';
+
 	export default {
 		data: function() {
 			return { 
-				status: 'Begin'
+				buttonText: 'Next',
+				selectedComponent: 'slideTwo'
 			}
 		},
 		components: {
 			'RoadmapComponent': Map,
-			'CardComponent': Card
-		},
-		methods: {
-			changeStatus() {
-				this.status = 'Green';
-				return this.status;
-			}
+			'CardComponent': Card,
+			'slideTwo': MiddleCard,
+			'ThirdCard': ThirdCard
 		}
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .App-slide1 {
   min-height: 100vh;
   display: flex;
